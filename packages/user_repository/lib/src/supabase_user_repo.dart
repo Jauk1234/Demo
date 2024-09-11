@@ -35,7 +35,7 @@ class SupabaseUserRepo implements UserRepository {
 
       final user = response.user;
       if (user == null) {
-        throw Exception('User creation failed');
+        throw Exception('User creation faileD');
       }
 
       myUser = myUser.copyWith(userId: user.id);

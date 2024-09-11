@@ -41,7 +41,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             signUpRequired = true;
           });
         } else if (state is SignUpFailure) {
-          return;
+          setState(() {
+            signUpRequired = false;
+          });
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Sign-up failed')),
+          );
         }
       },
       child: Form(
@@ -241,9 +246,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               );
                               setState(() {
                                 context.read<SignUpBloc>().add(SignUpRequired(
-                                      myUser,
-                                      passwordController.text,
-                                    ));
+                                    myUser, passwordController.text));
                               });
                             }
                           },

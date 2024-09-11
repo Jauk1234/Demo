@@ -43,6 +43,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 } else if (!RegExp(r'^[\w-\.]+@([\w-]+.)+[\w-]{2,4}$')
                     .hasMatch(val)) {
                   return 'Please enter a valid email';
+                } else {
+                  return '';
                 }
               },
             ),

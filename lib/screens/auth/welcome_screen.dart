@@ -6,7 +6,6 @@ import 'package:demoapp/blocs/sign_up_bloc/sign_up_bloc.dart';
 import 'package:demoapp/screens/auth/sign_in_screen.dart';
 import 'package:demoapp/screens/auth/sign_up_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -111,7 +110,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                           children: [
                             BlocProvider<SignInBloc>(
                               create: (context) => SignInBloc(
-                                UserRepository: context
+                                userRepository: context
                                     .read<AuthenticationBloc>()
                                     .userRepository,
                               ),
@@ -119,10 +118,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                             ),
                             BlocProvider<SignUpBloc>(
                               create: (context) => SignUpBloc(
-                                userRepository: context
-                                    .read<AuthenticationBloc>()
-                                    .userRepository,
-                              ),
+                                  userRepository: context
+                                      .read<AuthenticationBloc>()
+                                      .userRepository),
                               child: const SignUpScreen(),
                             ),
                           ],
